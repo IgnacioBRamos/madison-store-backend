@@ -29,7 +29,7 @@ export class Server {
 
 
         this.app.use(cors({
-            origin: envs.BASE_URL
+            origin: envs.CLIENT_URL
         }));
         this.app.use(express.json({ limit: '10kb' }))
         //this.app.use(apiLimiter);

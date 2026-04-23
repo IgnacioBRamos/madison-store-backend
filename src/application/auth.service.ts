@@ -47,7 +47,7 @@ export class AuthService {
             const token = JwtService.createJwt<JwtPayload>({ id: user.id, email: user.email, purpose: 'email-verification' }, '30m');
             if (!token) throw CustomError.InternalServerError('Error creating JWT');
             // Crear un token y mandarlo al mail del usuario para que este pueda validarse
-            const html = `<a href=${envs.BASE_URL}/api/user/verify/${token}>Click here to validate your email</a>`
+            const html = `<a href=${envs.SERVER_URL}/api/user/verify/${token}>Click here to validate your email</a>`
             emailService.sendEmail(user.email, 'Validate your account', html)
             return {
                 user: user,
